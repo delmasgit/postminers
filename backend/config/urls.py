@@ -1,4 +1,4 @@
-﻿"""
+"""
 URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -25,7 +25,7 @@ urlpatterns = [
     path('api/v1/auth/', include('modules.authentication.api.urls', namespace='authentication')),
     path('api/v1/workspaces/', include('modules.workspaces.urls')),
     path('api/v1/', include('modules.content_editor_studio.urls')),
-    path('api/v1/ai-engine/', include('modules.ai_engine.urls')),
+    path('api/v1/ai-engine/', include('modules.ai_engine.api.urls')),
 ]
 
 if settings.DEBUG:

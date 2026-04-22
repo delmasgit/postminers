@@ -17,7 +17,7 @@ def _send_transactional_email(*, to_email: str, subject: str, template_name: str
         html_content = render_to_string(template_name, context)
         
         # 2. Get the email, and strip any accidental whitespace
-        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'onboarding@resend.dev').strip()
+        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'onboarding@resend.dev     ').strip()
         
         # Safety check: If Django somehow still injects localhost, force the Resend test email
         if 'localhost' in from_email:

@@ -1,4 +1,4 @@
-﻿import os
+import os
 from pathlib import Path
 import environ
 from datetime import timedelta
@@ -24,6 +24,7 @@ DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = []
 
 GOOGLE_OAUTH_CLIENT_ID = env('GOOGLE_OAUTH_CLIENT_ID', default='')
+GOOGLE_AI_API_KEY = env('GOOGLE_AI_API_KEY', default='')
 
 # Third-Party API Keys
 RESEND_API_KEY = env('RESEND_API_KEY', default='')
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'modules.notifications.apps.NotificationsConfig', 
     'modules.workspaces.apps.WorkspacesConfig',
     'modules.content_editor_studio.apps.ContentEditorStudioConfig',
+    'modules.ai_engine.apps.AiEngineConfig',
 ]
 
 MIDDLEWARE = [

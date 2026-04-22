@@ -128,10 +128,17 @@ class EditDesignView(APIView):
             if isinstance(data.get('canvas'), dict) is False:
                 data['canvas'] = dict(data['canvas'])
 
-            result = EditorService.render_and_save(
-                data=data,
-                request=request
-            )
+            if data.get("preview_data_url"):
+                result = EditorService.save_with_client_preview(
+                    data=data,
+                    preview_data_url=data["preview_data_url"],
+                    request=request
+                )
+            else:
+                result = EditorService.render_and_save(
+                    data=data,
+                    request=request
+                )
 
             elapsed = round((time.time() - start) * 1000)
 

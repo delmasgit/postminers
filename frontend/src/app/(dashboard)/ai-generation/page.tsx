@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Plus } from "lucide-react";
 import api from "@/lib/api";
 import { toast } from "sonner";
+import { useAuthStore } from "@/stores/authStore";
 
 function getGreeting() {
   const h = new Date().getHours();
@@ -18,6 +19,8 @@ export default function AIGeneration() {
   const [step, setStep] = useState<"prompt" | "generating_images">("prompt");
   const [prompt, setPrompt] = useState("");
   const router = useRouter();
+  const { user } = useAuthStore();
+  const userName = user?.first_name || 'there';
 
   useEffect(() => {
     if (step === "generating_images") {
@@ -52,7 +55,7 @@ export default function AIGeneration() {
             {/* Greeting */}
             <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 tracking-tight leading-snug">
               <span className="text-muted-foreground">{getGreeting()}</span>
-              <span className="text-foreground">, Harsh.</span>
+              <span className="text-foreground">, {userName}.</span>
               <br />
               <span className="text-foreground">Let&apos;s create something.</span>
             </h1>

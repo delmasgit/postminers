@@ -40,6 +40,7 @@ class DesignEditRequestSerializer(serializers.Serializer):
     background = serializers.CharField(max_length=4096, required=False, default='#ffffff')
     canvas     = CanvasSerializer()
     elements   = ElementSerializer(many=True, required=False, default=list)
+    preview_data_url = serializers.CharField(required=False, allow_null=True, allow_blank=True)
 
 
 class DesignSaveRequestSerializer(serializers.Serializer):
@@ -48,6 +49,7 @@ class DesignSaveRequestSerializer(serializers.Serializer):
     background = serializers.CharField(max_length=4096, required=False, default='#ffffff')
     canvas     = CanvasSerializer()
     elements   = ElementSerializer(many=True, required=False, default=list)
+    preview_data_url = serializers.CharField(required=False, allow_null=True, allow_blank=True)
 
 
 # ──────────────────────────────────────────────

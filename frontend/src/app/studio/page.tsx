@@ -211,7 +211,12 @@ function StudioContent() {
           content:{ url:(obj as any).src||"" }});
       }
     });
-    return { design_id: designId||undefined, background: canvasBg, canvas:{ width:cw, height:ch }, elements: els };
+    
+    fc.discardActiveObject();
+    fc.renderAll();
+    const preview_data_url = fc.toDataURL({ format: "png", quality: 0.8, multiplier: 1, width: cw, height: ch, left: 0, top: 0 });
+
+    return { design_id: designId||undefined, background: canvasBg, canvas:{ width:cw, height:ch }, elements: els, preview_data_url };
   };
 
   const handleSave = async () => {
